@@ -1,0 +1,9 @@
+# Testing Ansible out with basic examples
+
+---
+- hosts: pull_mode_hosts
+  remote_user: root
+
+  tasks:
+  - name: Test connection
+    action: command echo "Hello World"
