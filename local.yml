@@ -1,7 +1,8 @@
 # Testing Ansible out with basic examples
 
 ---
-- hosts: pull_mode_hosts
+- hosts: all
+  connection: local
   remote_user: root
 
   tasks:
