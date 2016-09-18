@@ -2,9 +2,11 @@
 
 ---
 - hosts: all
-  connection: local
   remote_user: root
 
   tasks:
   - name: Test connection
     action: command echo "Hello World"
+
+  - name: Test connection with a ping
+    action: ping
