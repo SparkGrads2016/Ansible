@@ -19,13 +19,18 @@
   - debug: msg="Path exists and is a directory"
     when: dirExists.stat.isdir is defined and dirExists.stat.isdir
  
-  # Create an empty file called ansibleTestFile if a file called ledOn.py exists
-  # Set a variable called fileExists only if the file ledOn.py exists
-  - stat: path=/home/pi/Desktop/ledOn.py
+  # Create an empty file called ansibleTestFile
+  # Set a variable called fileExists only if ansibleTestFile exists
+  - stat: path=/home/pi/Desktop/ansibleTestFile
     register: fileExists
 
+<<<<<<< HEAD
   - name: Create an empty file called ansibleTestFile based on the variable fileExists
     args:
       creates: /home/pi/anisbleTestFile
     file: path=/home/pi/Desktop/ansibleTestFile state=touch owner=root group=pi mode=0644
+=======
+  - name: Create an empty file called ansibleTestFile
+    file: path=/home/pi/Desktop/ansibleTestFile state=touch owner=root group=sys mode=0555
+>>>>>>> parent of 252c0fa... Create a new file file based on conditionals - this one will work
     when: fileExists.stat.exists is defined and fileExists.stat.exists
