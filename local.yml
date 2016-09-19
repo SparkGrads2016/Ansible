@@ -25,5 +25,5 @@
     register: fileExists
 
   - name: Create an empty file called ansibleTestFile based on the variable fileExists
-    file: path=/home/pi/Desktop/ansibleTestFile state=touch owner=root group=sys mode=0555
+    file: path=/home/pi/Desktop/ansibleTestFile state=touch owner=root group=pi mode=0644
     when: fileExists.stat.exists is defined and fileExists.stat.exists
