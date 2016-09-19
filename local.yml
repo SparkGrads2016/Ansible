@@ -11,11 +11,6 @@
   - name: Test connection with a ping
     action: ping
 
-  # Create an empty file if a file called ledOn.py exists
-  # Set a variable called fileExists if ledOn.py exists
-  #- stat: path=/home/pi/Desktop/ledOn.py
-  #  register: fileExists
-
   # Determine if 'Ansible' path exists and is a directory
   # Must test that both the directory exists and is also set to true
   - stat: path=/home/pi/Desktop/Ansible
@@ -23,5 +18,12 @@
 
   - debug: msg="Path exists and is a directory"
     when: dirExists.stat.isdir is defined and dirExists.stat.isdir
-    
-    
+ 
+  # Create an empty file called ansibleTestFile
+  # Set a variable called fileExists only if ansibleTestFile exists
+  - stat: path=/home/pi/Desktop/ansibleTestFile
+    register: fileExists
+
+  - name: Create an empty file called ansibleTestFile
+    file: path=/home/pi/Desktop/ansibleTestFile state=touch owner=root group=sys mode=0555
+    when: fileExists.stat.exists is defined and fileExists.stat.exists
