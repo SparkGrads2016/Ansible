@@ -19,5 +19,5 @@
   - debug: msg="Path exists and is a directory"
     when: dirExists.stat.isdir is defined and dirExists.stat.isdir
 
-  # Test whether the envmonitor git repo exists
-  - git: repo=https://github.com/SparkGrads2016/envmonitorSpark.git dest=/home/pi/testRepo update=no
+  # Clone the envmonitor git repo
+  - git: repo=https://github.com/SparkGrads2016/envmonitorSpark.git dest=/home/pi/testRepo clone=yes
