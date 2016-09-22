@@ -1,23 +1,26 @@
-# Testing Ansible out with basic examples
-
 ---
 - hosts: all
   remote_user: root
 
   tasks:
-  - name: Test connection
-    action: command echo "Hello World"
-
   - name: Test connection with a ping
     action: ping
 
+  # Update all packages. Equivalent to "apt-get update"
+  - apt: update_cache=yes
+    become: true
+
+  # Upgrade all packages. Equivalent to "apt-get upgrade"
+  - apt: upgrade=yes
+    become: true
+
   # Determine if 'Ansible' path exists and is a directory
   # Must test that both the directory exists and is also set to true
-  - stat: path=/home/pi/Desktop/Ansible
+  - stat: path=/home/pi/gitRepos
     register: dirExists
 
   - debug: msg="Path exists and is a directory"
     when: dirExists.stat.isdir is defined and dirExists.stat.isdir
 
   # Clone the envmonitor git repo
-  - git: repo=https://github.com/SparkGrads2016/envmonitorSpark.git dest=/home/pi/testRepo clone=yes update=yes
+  - git: repo=https://github.com/SparkGrads2016/envmonitorSpark.git dest=/home/pi/testRepo update=yes
