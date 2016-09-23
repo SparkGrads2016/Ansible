@@ -1,0 +1,18 @@
+---
+- hosts: all
+  remote_user: root
+
+  tasks:
+  - name: Test connection with a ping
+    action: ping
+
+  # Clone an Adafruit repo for testing  
+#  - git: repo=https://github.com/adafruit/Adafruit_Python_SSD1306.git dest=/home/pi/womble/bomble update=yes
+
+  # Install the module
+  - easy_install: name=Adafruit-SSD1306
+
+  # Installing using pip
+#  - pip: name='file:///home/pi/womble/bomble/setup.py'
+#  - pip: name='git+https://github.com/adafruit/Adafruit_Python_SSD1306.git'
+
