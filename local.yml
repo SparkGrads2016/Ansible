@@ -24,9 +24,11 @@
 
   # Create the envmonitor directory
   - file: path=/home/pi/gitRepos/envmonitor state=directory mode=0755
+    become: true
 
   # Clone the envmonitor git repo
-#  - include: tasks/envmonitor.yml
+  - include: tasks/envmonitor.yml
+    become: true
 
   # Download and install all necessary Python modules to run sensors
 #  - include: tasks/sensorInstall.yml
