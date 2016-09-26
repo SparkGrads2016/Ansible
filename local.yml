@@ -16,14 +16,17 @@
 
   # Determine if 'Ansible' path exists and is a directory
   # Must test that both the directory exists and is also set to true
-  - stat: path=/home/pi/gitRepos
-    register: dirExists
+#  - stat: path=/home/pi/gitRepos
+#    register: dirExists
 
   - debug: msg="Path exists and is a directory"
-    when: dirExists.stat.isdir is defined and dirExists.stat.isdir
+#    when: dirExists.stat.isdir is defined and dirExists.stat.isdir
+
+  # Create the envmonitor directory
+  - file: path=/home/pi/gitRepos/envmonitor state=directory mode=0755
 
   # Clone the envmonitor git repo
-  - include: tasks/envmonitor.yml
+#  - include: tasks/envmonitor.yml
 
   # Download and install all necessary Python modules to run sensors
-  - include: tasks/sensorInstall.yml
+#  - include: tasks/sensorInstall.yml

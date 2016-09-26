@@ -1,0 +1,7 @@
+---
+
+  # Clone the envmonitor git repo
+  - git: repo=https://github.com/SparkGrads2016/envmonitorSpark.git dest=/home/pi/testRepo update=yes
+
+  # Clone an Adafruit repo for testing
+  - git: repo=https://github.com/adafruit/Adafruit_Python_SSD1306.git dest=/home/pi/womble/bomble update=yes
